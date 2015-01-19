@@ -6,7 +6,10 @@ CMD ["/sbin/my_init"]
 
 
 RUN apt-get update && apt-get -y install tomcat7 tomcat7-common libtomcat7-java
+
 ADD tomcat-setenv.sh /usr/share/tomcat7/bin/setenv.sh
+RUN mkdir /etc/service/tomcat7
+ADD run-tomcat7.sh /etc/service/tomcat7/run
 
 
 # Clean up APT when done
