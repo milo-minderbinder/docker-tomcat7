@@ -1,3 +1,4 @@
 #!/bin/sh
 
-/usr/share/tomcat7/bin/startup.sh 2>&1
+echo "Calling the tomcat7 startup script..."
+exec /usr/share/tomcat7/bin/catalina.sh run 2>&1

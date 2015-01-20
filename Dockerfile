@@ -10,8 +10,9 @@ RUN apt-get update && apt-get -y install tomcat7 tomcat7-common libtomcat7-java
 ADD tomcat-setenv.sh /usr/share/tomcat7/bin/setenv.sh
 RUN chmod +x /usr/share/tomcat7/bin/*.sh
 
-#RUN mkdir /etc/service/tomcat7
-#ADD run-tomcat7.sh /etc/service/tomcat7/run
+RUN mkdir /etc/service/tomcat7
+ADD run-tomcat7.sh /etc/service/tomcat7/run
+RUN chmod +x /etc/service/tomcat7/run
 
 
 EXPOSE 8080
