@@ -7,12 +7,21 @@ CMD ["/sbin/my_init"]
 
 RUN apt-get update && apt-get -y install tomcat7 tomcat7-common libtomcat7-java
 
-ADD tomcat-setenv.sh /usr/share/tomcat7/bin/setenv.sh
-RUN chmod +x /usr/share/tomcat7/bin/*.sh
+# Set up symlinks to fix Tomcat bug (https://bugs.launchpad.net/serverguide/+bug/1232258)
+WORKDIR /usr/share/tomcat7
+RUN ln -s /var/lib/tomcat7/common/ common
+RUN ln -s /var/lib/tomcat7/server/ server
+RUN ln -s /var/lib/tomcat7/shared/ shared
+RUN mkdir /usr/share/tomcat7/temp
 
+# Run Tomcat as a service with runit
 RUN mkdir /etc/service/tomcat7
-ADD run-tomcat7.sh /etc/service/tomcat7/run
+COPY run-tomcat7.sh /etc/service/tomcat7/run
 RUN chmod +x /etc/service/tomcat7/run
+
+# Set Tomcat environment variables
+ONBUILD COPY tomcat-setenv.sh /usr/share/tomcat7/bin/setenv.sh
+ONBUILD RUN chmod +x /usr/share/tomcat7/bin/*.sh
 
 
 EXPOSE 8080
