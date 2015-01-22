@@ -12,7 +12,8 @@ WORKDIR /usr/share/tomcat7
 RUN ln -s /var/lib/tomcat7/common/ common
 RUN ln -s /var/lib/tomcat7/server/ server
 RUN ln -s /var/lib/tomcat7/shared/ shared
-RUN mkdir /usr/share/tomcat7/temp
+RUN mkdir /var/lib/tomcat7/temp
+RUN chown tomcat7:tomcat7 /var/lib/tomcat7/temp
 
 # Run Tomcat as a service with runit
 RUN mkdir /etc/service/tomcat7
