@@ -22,8 +22,6 @@ RUN chmod +x /etc/service/tomcat7/run
 # Set Tomcat environment variables
 COPY tomcat-setenv.sh /usr/share/tomcat7/bin/setenv.sh
 RUN chmod +x /usr/share/tomcat7/bin/*.sh
-ONBUILD COPY tomcat-setenv.sh /usr/share/tomcat7/bin/setenv.sh
-ONBUILD RUN chmod +x /usr/share/tomcat7/bin/*.sh
 
 
 EXPOSE 8080
