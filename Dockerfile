@@ -16,15 +16,13 @@ RUN chown tomcat7:tomcat7 /var/lib/tomcat7/temp
 
 # Run Tomcat as a service with runit
 RUN mkdir /etc/service/tomcat7
-COPY run-tomcat7.sh /etc/service/tomcat7/run
+COPY tomcat7-run.sh /etc/service/tomcat7/run
 RUN chmod +x /etc/service/tomcat7/run
 
 # Set Tomcat environment variables
 COPY tomcat-setenv.sh /usr/share/tomcat7/bin/setenv.sh
 RUN chmod +x /usr/share/tomcat7/bin/*.sh
 
-
-EXPOSE 8080
 
 # Clean up APT when done
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
