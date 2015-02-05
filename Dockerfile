@@ -16,7 +16,7 @@ RUN chown tomcat7:tomcat7 /var/lib/tomcat7/temp
 
 # Run Tomcat as a service with runit
 RUN mkdir /etc/service/tomcat7
-COPY run-tomcat7.sh /etc/service/tomcat7/run
+COPY tomcat7-run.sh /etc/service/tomcat7/run
 RUN chmod +x /etc/service/tomcat7/run
 
 # Set Tomcat environment variables
