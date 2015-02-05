@@ -24,7 +24,5 @@ COPY tomcat-setenv.sh /usr/share/tomcat7/bin/setenv.sh
 RUN chmod +x /usr/share/tomcat7/bin/*.sh
 
 
-EXPOSE 8080
-
 # Clean up APT when done
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
