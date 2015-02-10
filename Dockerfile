@@ -1,6 +1,6 @@
-# mminderbinder/tomcat7:oracle-java8
-# Tomcat 7 container running on Oracle Java 8 JDK
-FROM mminderbinder/java-jdk:oracle-java8
+# mminderbinder/tomcat7:oracle-java7
+# Tomcat 7 container running on Oracle Java 7 JDK
+FROM mminderbinder/java-jdk:oracle-java7
 MAINTAINER Milo Minderbinder <minderbinder.enterprises@gmail.com>
 
 
